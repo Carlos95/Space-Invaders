@@ -168,13 +168,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc4ceb1eef5b1543a2dc5ec3d2aaed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabList:
+  asteroidPrefabList:
   - {fileID: 1830208557066070004, guid: a39e4eeed3ab87b43b94ebccd1b95eac, type: 3}
   - {fileID: 4828192752612571892, guid: feba018586cf61740a987fdfa81888bb, type: 3}
   - {fileID: 251559397050983578, guid: aee26cc9ae9f4c246b10efce3ce1e443, type: 3}
   - {fileID: 6957891870364680503, guid: 54fd2d6874dc3404abc6fda5947ddf5c, type: 3}
   - {fileID: 53923374343703274, guid: b3c32125472f7a34d87b451b5e1ac890, type: 3}
   - {fileID: 1460272152445412827, guid: 17f0d59dfdec4bc449c3b59fcb5abb7f, type: 3}
+  junkPrefabList:
+  - {fileID: 8525220607280635253, guid: 638b821a834074d498cae1772817f8e3, type: 3}
+  - {fileID: 43872709602456851, guid: 1a22997e74fb52d498ac279650e2da10, type: 3}
+  - {fileID: 3072510748420348194, guid: 7f3a7734589cd1c409b5fcdaad14f038, type: 3}
+  - {fileID: 5159130273786642140, guid: bb3414cf40bc9fc46b318bae7a802412, type: 3}
+  - {fileID: 8764359749136477425, guid: a718b5907d5495e40a1af4f934c26b21, type: 3}
+  - {fileID: 7359423524002696280, guid: 9ba0ef3db295dd44aa30e0def56d8791, type: 3}
 --- !u!114 &2925652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,7 +633,7 @@ GameObject:
   - component: {fileID: 726122180}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -643,7 +650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38e917c52987daa41af6a0305d9813c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
   xBoundary: 16
   yBoundary: 9
   heartContainers:
@@ -654,7 +660,6 @@ MonoBehaviour:
   - {fileID: 1632543664}
   - {fileID: 72246359}
   - {fileID: 217470621}
-  remainingHearts: 3
 --- !u!212 &726122178
 SpriteRenderer:
   m_ObjectHideFlags: 0

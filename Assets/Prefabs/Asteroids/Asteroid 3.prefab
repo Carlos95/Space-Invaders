@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2532202008016996037}
   - component: {fileID: 6241321717151072624}
   - component: {fileID: 2700900950430716712}
+  - component: {fileID: 7976936292733274758}
   m_Layer: 0
   m_Name: Asteroid 3
   m_TagString: Untagged
@@ -125,3 +126,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.12}
   m_EdgeRadius: 0
+--- !u!114 &7976936292733274758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251559397050983578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62350f664c0c84e4d8df12bb0db7ff1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,14 +7,14 @@ public class PlayerController : MonoBehaviour
 {
     private float horizontalInput;
     private float verticalInput;
-    public float speed = 20.0f;
+    private float speed = 20.0f;
     public float xBoundary;
     public float yBoundary;
 
     [SerializeField] private List<GameObject> heartContainers;
     [SerializeField] private List<Image> heartFills;
 
-    [SerializeField] private int remainingHearts;
+    private int remainingHearts = 3;
 
     private bool canShoot;
     private bool isInvulnerable;
