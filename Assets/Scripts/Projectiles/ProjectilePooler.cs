@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPooler : MonoBehaviour
+public class ProjectilePooler : MonoBehaviour
 {
-    public static ObjectPooler SharedInstance;
-    public List<GameObject> pooledObjects;
-    public GameObject objectToPool;
-    public int amountToPool;
+    public static ProjectilePooler SharedInstance;
+    private List<GameObject> pooledObjects;
+    [SerializeField] private GameObject objectToPool;
+    [SerializeField] private int amountToPool;
 
     void Awake()
     {

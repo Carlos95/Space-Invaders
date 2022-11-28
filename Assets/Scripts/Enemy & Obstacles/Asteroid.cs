@@ -20,7 +20,7 @@ public class Asteroid : Obstacle
 
     protected override void Move()
     {
-        transform.Translate(Vector2.down * speed);
+        transform.Translate(Vector2.up * speed);
     }
 
     protected override IEnumerator DestroyTimeout()

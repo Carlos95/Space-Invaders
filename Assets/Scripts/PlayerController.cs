@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
     {
         canShoot = false;
         Vector3 bulletOffset = new Vector3(0, 2);
-        GameObject pooledProjectile = ObjectPooler.SharedInstance.GetPooledObject();
+        GameObject pooledProjectile = ProjectilePooler.SharedInstance.GetPooledObject();
         pooledProjectile.SetActive(true); // activate it
         pooledProjectile.transform.position = transform.position + bulletOffset; // position it at player
         yield return new WaitForSeconds(0.2f);
@@ -149,6 +149,5 @@ public class PlayerController : MonoBehaviour
         if (!other.CompareTag("Projectile") && !isInvulnerable) {
             ReduceHealthPoint();
         }
-        
     }
 }

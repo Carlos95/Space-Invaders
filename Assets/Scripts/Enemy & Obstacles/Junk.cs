@@ -15,6 +15,9 @@ public class Junk : Obstacle
         junkRb.angularDrag = 2;
         junkRb.gravityScale = 0;
 
+        speed = 2;
+        healthPoints = 25;
+
         player = GameObject.Find("Player");
         StartCoroutine(DestroyTimeout());
     }
@@ -27,7 +30,7 @@ public class Junk : Obstacle
 
     protected override void Move()
     {
-        junkRb.AddForce((player.transform.position - transform.position).normalized * 2,ForceMode2D.Impulse);
+        junkRb.AddForce((player.transform.position - transform.position).normalized * speed,ForceMode2D.Impulse);
     }
 
     protected override IEnumerator DestroyTimeout()
@@ -36,12 +39,12 @@ public class Junk : Obstacle
         Destroy(gameObject);
     }
 
-    protected override void OnTriggerEnter2D(Collider2D other)
+    
+    protected void OnTriggerEnter2D(Collider2D other)
     {
-        base.OnTriggerEnter2D(other);
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
         }
-    }
+    } 
 }

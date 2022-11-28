@@ -11,10 +11,10 @@ public abstract class Obstacle : MonoBehaviour
         get { return m_HealthPoints; }
         set
         {
-            if (value < 0.0f)
+            if (value <= 0.0f)
             {
                 Destroy(gameObject);
-                Debug.LogError("Obstacle can't have a negative moving speed!");
+                Debug.Log("Obstacle Killed!");
             }
             else
             {
@@ -50,16 +50,7 @@ public abstract class Obstacle : MonoBehaviour
     }
 
     protected abstract void Move();
-
-    protected  virtual void OnTriggerEnter2D(Collider2D other)
-    {
-        //if the collision is between the obstacle and a projectile
-        if (other.gameObject.CompareTag("Projectile"))
-        {
-            other.gameObject.SetActive(false);
-            Destroy(gameObject);
-        }
-    }
+    
 
     protected abstract IEnumerator DestroyTimeout();
     

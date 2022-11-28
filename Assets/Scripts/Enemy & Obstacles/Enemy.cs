@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public abstract class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     private float m_Speed = 1;
     private int m_HealthPoints;
@@ -17,10 +17,10 @@ public abstract class Enemy : MonoBehaviour
         get { return m_HealthPoints; }
         set
         {
-            if (value < 0.0f)
+            if (value <= 0.0f)
             {
                 Destroy(gameObject);
-                Debug.Log("Kill enemy if HP below 0");
+                Debug.Log("Enemy Killed!");
             }
             else
             {
@@ -42,11 +42,6 @@ public abstract class Enemy : MonoBehaviour
                 m_Speed = value;
             }
         }
-    }
-
-    protected void Awake()
-    {
-       
     }
 
     private void Start()

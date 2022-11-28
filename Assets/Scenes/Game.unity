@@ -182,6 +182,10 @@ MonoBehaviour:
   - {fileID: 5159130273786642140, guid: bb3414cf40bc9fc46b318bae7a802412, type: 3}
   - {fileID: 8764359749136477425, guid: a718b5907d5495e40a1af4f934c26b21, type: 3}
   - {fileID: 7359423524002696280, guid: 9ba0ef3db295dd44aa30e0def56d8791, type: 3}
+  alienFighters:
+  - {fileID: 1372876123175761346, guid: d124d1043cf35ae4189b4eb91bad386d, type: 3}
+  alienMotherships:
+  - {fileID: 6342236015592352108, guid: 3303f92537f3c5545a3f978cb1114c53, type: 3}
 --- !u!114 &2925652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c0e1f24e2ce4a5b9bf1f3a7499cd45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledObjects: []
   objectToPool: {fileID: 7301867882795222260, guid: 82100c615fc8db04d9694d2b385a115a, type: 3}
   amountToPool: 10
 --- !u!1001 &40276005
@@ -698,8 +701,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1879730047
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c4f8a01fad80ab74f8e250b688d74a55, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
