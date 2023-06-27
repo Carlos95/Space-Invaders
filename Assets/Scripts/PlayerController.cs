@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,11 +11,12 @@ public class PlayerController : MonoBehaviour
     private float speed = 20.0f;
     public float xBoundary;
     public float yBoundary;
+    public GameObject deathFX;
 
     [SerializeField] private List<GameObject> heartContainers;
     [SerializeField] private List<Image> heartFills;
+    private int remainingHearts;
 
-    private int remainingHearts = 3;
 
     private bool canShoot;
     private bool isInvulnerable;
@@ -26,12 +28,20 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer playerSprite;
     Color playerColor;
 
+    private void GetInitialNumberOfHearts()
+    {
+        SerializedObject serializedObject = new SerializedObject(this);
+        SerializedProperty serializedProperty = serializedObject.FindProperty("heartContainers");
+
+        remainingHearts = serializedProperty.arraySize;
+    }
     private void Start()
     {
         canShoot = true;
         isInvulnerable = false;
         playerSprite = GetComponent<SpriteRenderer>();
         playerColor = playerSprite.color;
+        GetInitialNumberOfHearts();
     }
 
     // Update is called once per frame
@@ -46,6 +56,11 @@ public class PlayerController : MonoBehaviour
         {
             ActivateInvulnerabilityAnimation();
         } 
+
+        if (IsDead())
+        {
+            ActivateExplosionAnimation();
+        }
     }
 
     void PlayerLimits()
@@ -108,11 +123,7 @@ public class PlayerController : MonoBehaviour
         canShoot = true;
     }
 
-    void ReduceHealthPoint()
-    {
-        StartCoroutine(SetInvulnerability());
-        remainingHearts--;
-    }
+    
 
     void SetHealth()
     {
@@ -128,13 +139,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator SetInvulnerability()
+    public bool IsDead()
     {
-        isInvulnerable = true;
-        yield return new WaitForSeconds(3);
-        isInvulnerable = false;
-        playerColor.a = 1;
-        playerSprite.material.SetColor("_Color", playerColor);
+        if (remainingHearts <= 0)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
     }
 
     void ActivateInvulnerabilityAnimation()
@@ -144,10 +157,31 @@ public class PlayerController : MonoBehaviour
         playerSprite.material.SetColor("_Color", playerColor);
     }
 
+    void ActivateExplosionAnimation()
+    {
+        Instantiate(deathFX, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Projectile") && !isInvulnerable) {
             ReduceHealthPoint();
         }
+    }
+
+    void ReduceHealthPoint()
+    {
+        StartCoroutine(SetInvulnerability());
+        remainingHearts--;
+    }
+
+    IEnumerator SetInvulnerability()
+    {
+        isInvulnerable = true;
+        yield return new WaitForSeconds(3);
+        isInvulnerable = false;
+        playerColor.a = 1;
+        playerSprite.material.SetColor("_Color", playerColor);
     }
 }
