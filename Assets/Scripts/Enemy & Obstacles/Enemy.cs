@@ -74,6 +74,5 @@ public class Enemy : MonoBehaviour
         m_nextPosition++;
         if (m_nextPosition < waypoints.Count) return;
         m_nextPosition = 0;
-        //waypoints.Reverse();
     }
 }

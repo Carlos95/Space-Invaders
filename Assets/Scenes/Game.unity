@@ -198,8 +198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c0e1f24e2ce4a5b9bf1f3a7499cd45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 7301867882795222260, guid: 82100c615fc8db04d9694d2b385a115a, type: 3}
-  amountToPool: 10
+  objectsToPool:
+  - {fileID: 7301867882795222260, guid: 82100c615fc8db04d9694d2b385a115a, type: 3}
+  - {fileID: 7301867882795222260, guid: 93147b21d96b2044990f797d9ac09bed, type: 3}
+  amountToPool: 100
 --- !u!1001 &40276005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -655,6 +657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xBoundary: 16
   yBoundary: 9
+  deathFX: {fileID: 100002, guid: cafecd3fc3b761c45bb1553f35cf5c96, type: 3}
   heartContainers:
   - {fileID: 40276007}
   - {fileID: 1984532737}

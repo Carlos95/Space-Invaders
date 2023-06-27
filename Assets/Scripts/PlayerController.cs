@@ -109,14 +109,13 @@ public class PlayerController : MonoBehaviour
                 StopCoroutine(BulletCadence());
             }
         }
-         
     }
 
     IEnumerator BulletCadence()
     {
         canShoot = false;
         Vector3 bulletOffset = new Vector3(0, 2);
-        GameObject pooledProjectile = ProjectilePooler.SharedInstance.GetPooledObject();
+        GameObject pooledProjectile = ProjectilePooler.SharedInstance.GetPooledObject("Player Missile");
         pooledProjectile.SetActive(true); // activate it
         pooledProjectile.transform.position = transform.position + bulletOffset; // position it at player
         yield return new WaitForSeconds(0.2f);
