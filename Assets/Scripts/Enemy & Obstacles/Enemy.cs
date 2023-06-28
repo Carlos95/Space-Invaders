@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     private float m_Speed = 1;
     private int m_HealthPoints;
-    [SerializeField] protected List<Transform> waypoints;
+    public List<GameObject> waypoints;
     private int m_nextPosition;
     private Vector2 m_CurrentPosition;
     private Vector2 m_TargetPosition;
@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
     {
         if (waypoints.Count == 0) return;
         m_CurrentPosition = transform.position;
-        m_TargetPosition = waypoints[m_nextPosition].position;
+        m_TargetPosition = waypoints[m_nextPosition].transform.position;
         // Distance between enemy and waypoint
         float distance = Vector2.Distance(m_CurrentPosition, m_TargetPosition);
         Vector2 directionOfTravel = m_TargetPosition - m_CurrentPosition;

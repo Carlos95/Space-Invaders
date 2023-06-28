@@ -8,15 +8,20 @@ public class PlayerController : MonoBehaviour
 {
     private float horizontalInput;
     private float verticalInput;
-    private float speed = 20.0f;
-    public float xBoundary;
-    public float yBoundary;
+    private float speed = 20.0f; 
     public GameObject deathFX;
+
+    ScreenBoundaries screenBoundaries;
+    private float objectWidth;
+    private float objectHeight;
+    private float leftBoundary;
+    private float rightBoundary;
+    private float bottomBoundary;
+    private float topBoundary;
 
     [SerializeField] private List<GameObject> heartContainers;
     [SerializeField] private List<Image> heartFills;
     private int remainingHearts;
-
 
     private bool canShoot;
     private bool isInvulnerable;
@@ -28,19 +33,21 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer playerSprite;
     Color playerColor;
 
-    private void GetInitialNumberOfHearts()
+    
+    private void Awake()
     {
-        SerializedObject serializedObject = new SerializedObject(this);
-        SerializedProperty serializedProperty = serializedObject.FindProperty("heartContainers");
-
-        remainingHearts = serializedProperty.arraySize;
+        playerSprite = GetComponent<SpriteRenderer>();
+        objectWidth = playerSprite.bounds.size.x / 2;
+        objectHeight = playerSprite.bounds.size.y / 2;        
+        screenBoundaries = GameObject.Find("Screen Boundaries").GetComponent<ScreenBoundaries>();
     }
+
     private void Start()
     {
         canShoot = true;
         isInvulnerable = false;
-        playerSprite = GetComponent<SpriteRenderer>();
         playerColor = playerSprite.color;
+        GetBounderies();
         GetInitialNumberOfHearts();
     }
 
@@ -48,7 +55,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMovement();
-        PlayerLimits();
+        PlayerLimitCorrection();
         Shoot();
         SetHealth();
 
@@ -63,27 +70,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void PlayerLimits()
+    private void GetInitialNumberOfHearts()
     {
-        if (transform.position.x < -xBoundary)
-        {
-            transform.position = new Vector2(-xBoundary, transform.position.y);
-        }
+        SerializedObject serializedObject = new SerializedObject(this);
+        SerializedProperty serializedProperty = serializedObject.FindProperty("heartContainers");
 
-        if (transform.position.x > xBoundary)
-        {
-            transform.position = new Vector2(xBoundary, transform.position.y);
-        }
-
-        if (transform.position.y < -yBoundary)
-        {
-            transform.position = new Vector2(transform.position.x, -yBoundary);
-        }
-
-        if (transform.position.y > yBoundary)
-        {
-            transform.position = new Vector2(transform.position.x, yBoundary);
-        }
+        remainingHearts = serializedProperty.arraySize;
     }
 
     void PlayerMovement()
@@ -92,6 +84,39 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
         transform.Translate(Vector2.right * Time.deltaTime * speed * horizontalInput);
         transform.Translate(Vector2.up * Time.deltaTime * speed * verticalInput);
+    }
+
+    void PlayerLimitCorrection()
+    {
+        Vector2 pos = transform.position;
+        
+        if (pos.x < leftBoundary)
+        {
+            transform.position = new Vector2(leftBoundary, transform.position.y);
+        }
+
+        if (pos.x > rightBoundary)
+        {
+            transform.position = new Vector2(rightBoundary, transform.position.y);
+        }
+
+        if (pos.y < bottomBoundary)
+        {
+            transform.position = new Vector2(transform.position.x, bottomBoundary);
+        }
+
+        if (pos.y > topBoundary)
+        {
+            transform.position = new Vector2(transform.position.x, topBoundary);
+        }
+    }
+
+    void GetBounderies()
+    {
+        leftBoundary = screenBoundaries.leftBoundary + objectWidth;
+        rightBoundary = screenBoundaries.rightBoundary - objectWidth;
+        bottomBoundary = screenBoundaries.bottomBoundary + objectHeight;
+        topBoundary = screenBoundaries.topBoundary - objectHeight;
     }
 
     void Shoot()

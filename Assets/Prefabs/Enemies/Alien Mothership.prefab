@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3121999296110375180}
   m_Layer: 0
   m_Name: Alien Mothership
-  m_TagString: Enemy
+  m_TagString: MotherShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 6342236015592352108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.15, y: 2.77, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.72, y: 0.72, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -98,9 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3453a0f83d463394da25a81ef61b964c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 5201438767708921106, guid: 917ceb53e42f1a840b1b56e18f8fbb69, type: 3}
-  - {fileID: 269053622945703563, guid: f79d63183defac84dbd045b9de43d079, type: 3}
 --- !u!61 &3121999296110375180
 BoxCollider2D:
   m_ObjectHideFlags: 0
