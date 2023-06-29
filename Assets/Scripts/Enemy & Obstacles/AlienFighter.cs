@@ -9,7 +9,6 @@ public class AlienFighter : Enemy
     {
         foreach (GameObject wp in GameObject.FindGameObjectsWithTag("AlienFighterWaypoint"))
         {
-            Debug.Log(wp);
             waypoints.Add(wp);
         }
     }

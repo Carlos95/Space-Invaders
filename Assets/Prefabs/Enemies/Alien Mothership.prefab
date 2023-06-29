@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6342236015592352099}
   - component: {fileID: 6342236015592352097}
   - component: {fileID: 3121999296110375180}
-  - component: {fileID: -4021975594621057253}
+  - component: {fileID: 9086781567127957290}
   m_Layer: 0
   m_Name: Alien Mothership
   m_TagString: MotherShip
@@ -126,17 +126,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.09, y: 4.79}
   m_EdgeRadius: 0
---- !u!114 &-4021975594621057253
+--- !u!114 &9086781567127957290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6342236015592352108}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b8f4e14a28667445b525a35b84dc1f9, type: 3}
+  m_Script: {fileID: 11500000, guid: bf1104602cb6b2344886be8709d95bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lnRenderer: {fileID: 0}
-  visual_Distance: 1024
+  laserPrefab: {fileID: 1825229309053847634, guid: 5d64c6b3306963f4890e8b8c522e382c, type: 3}
