@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private int remainingHearts;
 
     private bool canShoot;
+    private float bulletCadence = 0.5f;
     private bool isInvulnerable;
 
     // variables used for wave animations
@@ -127,23 +128,23 @@ public class PlayerController : MonoBehaviour
             if (canShoot)
             {
 
-                StartCoroutine(BulletCadence());
+                StartCoroutine(WithBulletCadence());
             }
             else
             {
-                StopCoroutine(BulletCadence());
+                StopCoroutine(WithBulletCadence());
             }
         }
     }
 
-    IEnumerator BulletCadence()
+    IEnumerator WithBulletCadence()
     {
         canShoot = false;
-        Vector3 bulletOffset = new Vector3(0, 2);
+        Vector3 bulletOffset = new Vector3(0, 1);
         GameObject pooledProjectile = ProjectilePooler.SharedInstance.GetPooledObject("Player Missile");
         pooledProjectile.SetActive(true); // activate it
         pooledProjectile.transform.position = transform.position + bulletOffset; // position it at player
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(bulletCadence);
         canShoot = true;
     }
 

@@ -28,30 +28,44 @@ public class SpawnManager : MonoBehaviour
     private int totalAsteroids;
     private int totalJunk;
 
+    private void Awake()
+    {
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         screenBoundaries = GameObject.Find("Screen Boundaries").GetComponent<ScreenBoundaries>();
-        StartCoroutine(SpawnObstacle(asteroidPrefabList, 2, 5, MAXCOUNT_ASTEROID));
-        StartCoroutine(SpawnObstacle(junkPrefabList, 4, 6, MAXCOUNT_JUNK));
-        StartCoroutine(SpawnObstacle(alienFighters, 2, 5, MAXCOUNT_ALIENFIGHTER));
-        StartCoroutine(SpawnObstacle(alienMotherships, 15, 20, MAXCOUNT_MOTHERSHIP));
+        StartSpawning();
     }
 
     // Update is called once per frame
     void Update()
     {
-        totalAlienFighters = GameObject.FindGameObjectsWithTag(ALIENFIGHTER_TAG).Length;
-        totalMothership = GameObject.FindGameObjectsWithTag(MOTHERSHIP_TAG).Length;
-        totalAsteroids = GameObject.FindGameObjectsWithTag(ASTEROID_TAG).Length;
-        totalJunk = GameObject.FindGameObjectsWithTag(JUNK_TAG).Length;
+        totalAlienFighters = GetTotalNumberOf(ALIENFIGHTER_TAG);
+        totalMothership = GetTotalNumberOf(MOTHERSHIP_TAG);
+        totalAsteroids = GetTotalNumberOf(ASTEROID_TAG);
+        totalJunk = GetTotalNumberOf(JUNK_TAG);
+    }
+
+    void StartSpawning()
+    {
+        StartCoroutine(SpawnObstacle(asteroidPrefabList, 2, 5, MAXCOUNT_ASTEROID));
+        StartCoroutine(SpawnObstacle(junkPrefabList, 10, 12, MAXCOUNT_JUNK));
+        StartCoroutine(SpawnObstacle(alienFighters, 2, 5, MAXCOUNT_ALIENFIGHTER));
+        StartCoroutine(SpawnObstacle(alienMotherships, 15, 20, MAXCOUNT_MOTHERSHIP));
+    }
+
+    int GetTotalNumberOf(string tag)
+    {
+        return GameObject.FindGameObjectsWithTag(tag).Length;
     }
 
     IEnumerator SpawnObstacle(List<GameObject> prefabList, int minSpawnTime, int maxSpawnTime, int maxNumberofSpawns)
     {
         while (true)
         {
-
             Vector3 offset = new Vector2(Random.Range(screenBoundaries.leftBoundary, screenBoundaries.rightBoundary), transform.position.y);
             int index = Random.Range(0, prefabList.Count);
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
