@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class AlienMotherShip : Enemy
 {
+
+    private void Awake()
+    {
+        foreach (GameObject wp in GameObject.FindGameObjectsWithTag("MotherShipWaypoint"))
+        {
+            waypoints.Add(wp);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
 {
-    private float topBound = 8;
+    private float topBound = 20;
+    private float bottomBound = -10;
     private int m_Damage;
     public int damage
     {
@@ -54,7 +55,7 @@ public abstract class Projectile : MonoBehaviour
 
     void OutOfBounds()
     {
-        if (transform.position.y > topBound)
+        if (transform.position.y > topBound || transform.position.y < bottomBound)
         {
             gameObject.SetActive(false);
         }

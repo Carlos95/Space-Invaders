@@ -6,6 +6,16 @@ public abstract class Obstacle : MonoBehaviour
 {
     private float m_Speed = 1;
     private int m_HealthPoints;
+    private PlayerController m_Player;
+    public PlayerController player
+    {
+        get { return m_Player; }
+        set
+        {
+            m_Player = value;
+        }
+    }
+
     public int healthPoints
     {
         get { return m_HealthPoints; }
@@ -39,6 +49,18 @@ public abstract class Obstacle : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        try
+        {
+            player = GameObject.Find("Player").GetComponent<PlayerController>();
+        }
+        catch
+        {
+            Debug.Log("Player Not Found");
+        };
+    }
+
     private void Start()
     {
         
@@ -46,7 +68,10 @@ public abstract class Obstacle : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if (player != null && !player.IsDead())
+        {
+            Move();
+        }        
     }
 
     protected abstract void Move();

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Junk : Obstacle
 {
     private Rigidbody2D junkRb;
-    private GameObject player;
+    //private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +18,11 @@ public class Junk : Obstacle
         speed = 2;
         healthPoints = 25;
 
-        player = GameObject.Find("Player");
+        //player = GameObject.Find("Player");
         StartCoroutine(DestroyTimeout());
     }
 
-    // Update is called once per frame
+    // Update is called once per frame 
     void Update()
     {
         

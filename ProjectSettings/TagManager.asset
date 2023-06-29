@@ -7,6 +7,13 @@ TagManager:
   - Projectile
   - Obstacle
   - Enemy
+  - AlienFighter
+  - EnemyMissile
+  - MotherShip
+  - Asteroid
+  - Junk
+  - AlienFighterWaypoint
+  - MotherShipWaypoint
   layers:
   - Default
   - TransparentFX

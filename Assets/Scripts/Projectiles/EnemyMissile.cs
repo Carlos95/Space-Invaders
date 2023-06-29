@@ -2,30 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroid : Obstacle
+public class EnemyMissile : Projectile
 {
     // Start is called before the first frame update
     void Start()
     {
         speed = 0.2f;
-        healthPoints = 75;
-        StartCoroutine(DestroyTimeout());
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        Move();
     }
+
+    
 
     protected override void Move()
     {
         transform.Translate(Vector2.up * speed);
     }
 
-    protected override IEnumerator DestroyTimeout()
+    protected void OnTriggerEnter2D(Collider2D other)
     {
-        yield return new WaitForSeconds(3);
-        Destroy(gameObject);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

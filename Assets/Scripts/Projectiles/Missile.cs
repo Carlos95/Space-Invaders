@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Missile : Projectile
 {
+    // All enemy and obstacles tags
+    private const string ALIENFIGHTER_TAG = "AlienFighter";
+    private const string MOTHERSHIP_TAG = "MotherShip";
+    private const string JUNK_TAG = "Junk";
+    private const string ASTEROID_TAG = "Asteroid";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,13 +33,15 @@ public class Missile : Projectile
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         //if the collision is between the projectile and an obstacle/enemy
-        if (other.gameObject.CompareTag("Obstacle"))
+        if (other.gameObject.CompareTag(JUNK_TAG) 
+            || other.gameObject.CompareTag(ASTEROID_TAG))
         {
             gameObject.SetActive(false);
             other.gameObject.GetComponent<Obstacle>().healthPoints -= damage;
         }
 
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag(ALIENFIGHTER_TAG) 
+            || other.gameObject.CompareTag(MOTHERSHIP_TAG))
         {
             gameObject.SetActive(false);
             other.gameObject.GetComponent<Enemy>().healthPoints -= damage;
