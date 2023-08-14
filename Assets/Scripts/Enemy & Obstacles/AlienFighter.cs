@@ -5,6 +5,7 @@ using UnityEngine;
 public class AlienFighter : Enemy
 {
     private float bulletCadence = 2f;
+    private bool canShoot;
     private void Awake()
     {
         foreach (GameObject wp in GameObject.FindGameObjectsWithTag("AlienFighterWaypoint"))
@@ -20,7 +21,7 @@ public class AlienFighter : Enemy
         canShoot = true;
     }
 
-    private bool canShoot;
+    
 
     void FixedUpdate()
     {
