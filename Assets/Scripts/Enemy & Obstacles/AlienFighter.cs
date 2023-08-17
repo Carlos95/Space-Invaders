@@ -6,18 +6,22 @@ public class AlienFighter : Enemy
 {
     private float bulletCadence = 2f;
     private bool canShoot;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         foreach (GameObject wp in GameObject.FindGameObjectsWithTag("AlienFighterWaypoint"))
         {
             waypoints.Add(wp);
         }
     }
+
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         speed = 10f;
         healthPoints = 150;
+        scoreValue = healthPoints;
         canShoot = true;
     }
 

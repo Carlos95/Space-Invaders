@@ -9,8 +9,10 @@ public class Enemy : MonoBehaviour
     private int m_HealthPoints;
     public List<GameObject> waypoints;
     private int m_nextPosition;
+    private ScoreManager scoreManager;
     private Vector2 m_CurrentPosition;
     private Vector2 m_TargetPosition;
+    public int scoreValue { get; set; }
 
     public int healthPoints
     {
@@ -20,6 +22,8 @@ public class Enemy : MonoBehaviour
             if (value <= 0.0f)
             {
                 Destroy(gameObject);
+                scoreManager.AddScore(scoreValue);
+                scoreManager.ShowAdditionScore(scoreValue);
                 Debug.Log("Enemy Killed!");
             }
             else
@@ -43,9 +47,21 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-
-    private void Start()
+    protected virtual void Awake()
     {
+        try
+        {
+            scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        }
+        catch
+        {
+            Debug.Log("Score Manager not found");
+        }
+    }
+
+    protected virtual void Start()
+    {
+        
         if (!waypoints.Any() || waypoints[m_nextPosition] == null)
         {
             Debug.LogError("The enemy waypoint system is not working");
@@ -54,6 +70,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        
         EnemyMovePattern();
     }
     

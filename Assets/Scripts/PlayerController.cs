@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private int remainingHearts;
 
     private bool canShoot;
-    private float bulletCadence = 0.5f;
+    private float bulletCadence = 0.2f;
     private bool isInvulnerable;
 
     // variables used for wave animations
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (!IsDead())
         {
 
             if (canShoot)

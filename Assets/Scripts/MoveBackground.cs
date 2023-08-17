@@ -7,6 +7,14 @@ public class MoveBackground : MonoBehaviour
     private Vector2 initialPosition;
     public float speed;
     private float repeatWidth;
+    private ScoreManager scoreManagerRef;
+    private PlayerController playerController;
+
+    void Awake()
+    {
+        scoreManagerRef = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +34,16 @@ public class MoveBackground : MonoBehaviour
     {
         if (transform.position.y < initialPosition.y - repeatWidth)
         {
+            AddDistanceScore();
             transform.position = initialPosition;
+        }
+    }
+
+    void AddDistanceScore()
+    {
+        if (!playerController.IsDead())
+        {
+            scoreManagerRef.AddScore(225);
         }
     }
 }

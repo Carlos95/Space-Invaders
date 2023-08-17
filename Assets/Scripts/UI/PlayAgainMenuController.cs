@@ -31,6 +31,7 @@ public class PlayAgainMenuController : MonoBehaviour
     void ResetScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
 
     void ShowReplayMenu()
