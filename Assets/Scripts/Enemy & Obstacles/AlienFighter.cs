@@ -5,23 +5,27 @@ using UnityEngine;
 public class AlienFighter : Enemy
 {
     private float bulletCadence = 2f;
-    private void Awake()
+    private bool canShoot;
+    protected override void Awake()
     {
+        base.Awake();
         foreach (GameObject wp in GameObject.FindGameObjectsWithTag("AlienFighterWaypoint"))
         {
-            Debug.Log(wp);
             waypoints.Add(wp);
         }
     }
+
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         speed = 10f;
         healthPoints = 150;
+        scoreValue = healthPoints;
         canShoot = true;
     }
 
-    private bool canShoot;
+    
 
     void FixedUpdate()
     {

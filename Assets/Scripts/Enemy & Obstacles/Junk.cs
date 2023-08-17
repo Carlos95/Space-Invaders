@@ -17,6 +17,7 @@ public class Junk : Obstacle
 
         speed = 2;
         healthPoints = 25;
+        scoreValue = healthPoints;
 
         //player = GameObject.Find("Player");
         StartCoroutine(DestroyTimeout());

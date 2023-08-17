@@ -9,6 +9,7 @@ public class Asteroid : Obstacle
     {
         speed = 0.2f;
         healthPoints = 75;
+        scoreValue = healthPoints;
         StartCoroutine(DestroyTimeout());
     }
 
