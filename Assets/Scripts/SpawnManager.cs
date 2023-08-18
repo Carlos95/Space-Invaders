@@ -9,24 +9,27 @@ public class SpawnManager : MonoBehaviour
     private const string MOTHERSHIP_TAG = "MotherShip";
     private const string JUNK_TAG = "Junk";
     private const string ASTEROID_TAG = "Asteroid";
+    private const string POWERUP_TAG = "PowerUp";
 
     // The maximum number of enemies or obstacles that can be on the game at once
     private const int MAXCOUNT_ALIENFIGHTER = 3;
     private const int MAXCOUNT_MOTHERSHIP = 1;
     private const int MAXCOUNT_JUNK = 1;
     private const int MAXCOUNT_ASTEROID = 1;
-
+    private const int MAXCOUNT_POWERUPS = 1;
 
 
     [SerializeField] private List<GameObject> asteroidPrefabList;
     [SerializeField] private List<GameObject> junkPrefabList;
     [SerializeField] private List<GameObject> alienFighters;
     [SerializeField] private List<GameObject> alienMotherships;
+    [SerializeField] private List<GameObject> powerUpsPrefabList;
     ScreenBoundaries screenBoundaries;
     private int totalAlienFighters;
     private int totalMothership;
     private int totalAsteroids;
     private int totalJunk;
+    private int totalPowerUps;
 
     private void Awake()
     {
@@ -47,14 +50,16 @@ public class SpawnManager : MonoBehaviour
         totalMothership = GetTotalNumberOf(MOTHERSHIP_TAG);
         totalAsteroids = GetTotalNumberOf(ASTEROID_TAG);
         totalJunk = GetTotalNumberOf(JUNK_TAG);
+        totalPowerUps = GetTotalNumberOf(POWERUP_TAG);
     }
 
     void StartSpawning()
     {
-        StartCoroutine(SpawnObstacle(asteroidPrefabList, 2, 5, MAXCOUNT_ASTEROID));
-        StartCoroutine(SpawnObstacle(junkPrefabList, 10, 12, MAXCOUNT_JUNK));
-        StartCoroutine(SpawnObstacle(alienFighters, 2, 5, MAXCOUNT_ALIENFIGHTER));
-        StartCoroutine(SpawnObstacle(alienMotherships, 15, 20, MAXCOUNT_MOTHERSHIP));
+        StartCoroutine(Spawn(powerUpsPrefabList, 5, 10, MAXCOUNT_POWERUPS));
+        StartCoroutine(Spawn(asteroidPrefabList, 2, 5, MAXCOUNT_ASTEROID));
+        StartCoroutine(Spawn(junkPrefabList, 10, 12, MAXCOUNT_JUNK));
+        StartCoroutine(Spawn(alienFighters, 2, 5, MAXCOUNT_ALIENFIGHTER));
+        StartCoroutine(Spawn(alienMotherships, 15, 20, MAXCOUNT_MOTHERSHIP));
     }
 
     int GetTotalNumberOf(string tag)
@@ -62,7 +67,7 @@ public class SpawnManager : MonoBehaviour
         return GameObject.FindGameObjectsWithTag(tag).Length;
     }
 
-    IEnumerator SpawnObstacle(List<GameObject> prefabList, int minSpawnTime, int maxSpawnTime, int maxNumberofSpawns)
+    IEnumerator Spawn(List<GameObject> prefabList, int minSpawnTime, int maxSpawnTime, int maxNumberofSpawns)
     {
         while (true)
         {
@@ -93,6 +98,12 @@ public class SpawnManager : MonoBehaviour
                     if (totalAsteroids < maxNumberofSpawns)
                     {
                         Instantiate(prefabList[index], transform.position + offset, transform.rotation * Quaternion.Euler(0, 0, 180f));
+                    }
+                    break;
+                case POWERUP_TAG:
+                    if (totalPowerUps < maxNumberofSpawns)
+                    {
+                        Instantiate(prefabList[index], transform.position + offset, transform.rotation * Quaternion.Euler(0, 0, 0));
                     }
                     break;
                 default:

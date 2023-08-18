@@ -21,10 +21,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private List<GameObject> heartContainers;
     [SerializeField] private List<Image> heartFills;
-    private int remainingHearts;
+    public int remainingHearts;
 
     private bool canShoot;
-    private float bulletCadence = 0.2f;
+    private float bulletCadence = 0.3f;
     private bool isInvulnerable;
 
     // variables used for wave animations
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         isInvulnerable = false;
         playerColor = playerSprite.color;
         GetBounderies();
-        GetInitialNumberOfHearts();
+        remainingHearts = GetInitialNumberOfHearts();
     }
 
     // Update is called once per frame
@@ -71,12 +71,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void GetInitialNumberOfHearts()
+    public int GetInitialNumberOfHearts()
     {
-        SerializedObject serializedObject = new SerializedObject(this);
-        SerializedProperty serializedProperty = serializedObject.FindProperty("heartContainers");
-
-        remainingHearts = serializedProperty.arraySize;
+        return heartContainers.Count;
     }
 
     void PlayerMovement()
@@ -160,6 +157,10 @@ public class PlayerController : MonoBehaviour
             if ( heartNumber > remainingHearts )
             {
                 healthHeart.fillAmount = 0;
+            } else if (heartNumber <= remainingHearts )
+            {
+                Debug.Log("called");
+                healthHeart.fillAmount = 1;
             }
         }
     }
@@ -190,9 +191,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Projectile") && !isInvulnerable) {
+        if (isHarmful(other)) {
             ReduceHealthPoint();
         }
+    }
+
+    private bool isHarmful(Collider2D other)
+    {
+        return !other.CompareTag("Projectile") && !other.CompareTag("PowerUp") && !isInvulnerable;
     }
 
     void ReduceHealthPoint()
