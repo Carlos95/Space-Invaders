@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public int remainingHearts;
 
     private bool canShoot;
-    private float bulletCadence = 0.3f;
+    private float bulletCadence = 0.4f;
     private bool isInvulnerable;
 
     // variables used for wave animations
@@ -159,7 +159,6 @@ public class PlayerController : MonoBehaviour
                 healthHeart.fillAmount = 0;
             } else if (heartNumber <= remainingHearts )
             {
-                Debug.Log("called");
                 healthHeart.fillAmount = 1;
             }
         }

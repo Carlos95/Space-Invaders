@@ -42,7 +42,7 @@ public class CreateLaser : MonoBehaviour
 
         if (isGracePeriod)
         {
-            ActivateInvulnerabilityAnimation();
+            ActivateGracePeriod();
             laserCollider.enabled = false;
         }  else
         {
@@ -63,7 +63,7 @@ public class CreateLaser : MonoBehaviour
         Destroy(laserInstance);
     }
 
-    void ActivateInvulnerabilityAnimation()
+    void ActivateGracePeriod()
     {
         elapsedTime += Time.deltaTime * Time.timeScale * frequency;
         laserColor.a = Mathf.Abs(Mathf.Sin(elapsedTime));

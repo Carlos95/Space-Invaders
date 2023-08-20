@@ -3,21 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthPowerUp : PowerUp
-{
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
+{   
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -28,9 +14,9 @@ public class HealthPowerUp : PowerUp
 
     private void IncreaseHealthPoint()
     {
-        if (player.remainingHearts < player.GetInitialNumberOfHearts() )
+        if (playerController.remainingHearts < playerController.GetInitialNumberOfHearts() )
         {
-            player.remainingHearts++;
+            playerController.remainingHearts++;
             Destroy(gameObject);
         }
     }

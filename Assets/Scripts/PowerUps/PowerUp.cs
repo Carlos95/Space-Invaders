@@ -5,7 +5,8 @@ using UnityEngine;
 public abstract class PowerUp : MonoBehaviour
 {
 
-    protected PlayerController player;
+    protected PlayerController playerController;
+    protected GameObject player;
     private float speed;
 
     
@@ -13,7 +14,8 @@ public abstract class PowerUp : MonoBehaviour
     {
         try
         {
-            player = GameObject.Find("Player").GetComponent<PlayerController>();
+            player = GameObject.Find("Player");
+            playerController = player.GetComponent<PlayerController>();
         }
         catch
         {
@@ -32,7 +34,7 @@ public abstract class PowerUp : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (player != null && !player.IsDead())
+        if (player != null && !playerController.IsDead())
         {
             Move();
         }
@@ -40,14 +42,15 @@ public abstract class PowerUp : MonoBehaviour
 
     private void Move()
     {
-        Debug.Log("Moving");
-
         transform.Translate(Vector2.down * speed);
     }
 
     private IEnumerator DestroyTimeout()
     {
-        yield return new WaitForSeconds(3);
+        Debug.LogError("Start destroy countdown");
+        yield return new WaitForSeconds(5);
+        Debug.LogError("Destroyed");
+
         Destroy(gameObject);
     }
 

@@ -19,7 +19,7 @@ public class AlienFighter : Enemy
     protected override void Start()
     {
         base.Start();
-        speed = 10f;
+        speed = 7f;
         healthPoints = 150;
         scoreValue = healthPoints;
         canShoot = true;

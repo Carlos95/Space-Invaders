@@ -13,7 +13,7 @@ public class Missile : Projectile
     // Start is called before the first frame update
     void Start()
     {
-        speed = 0.2f;
+        speed = 0.15f;
         damage = 25;
     }
 

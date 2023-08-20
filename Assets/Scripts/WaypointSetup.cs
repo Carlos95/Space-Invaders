@@ -10,6 +10,8 @@ public class WaypointSetup : MonoBehaviour
     private float topBoundary;
     ScreenBoundaries screenBoundaries;
 
+    private const float OFFSET = 0.5f; 
+
     private void Awake()
     {
         screenBoundaries = GameObject.Find("Screen Boundaries").GetComponent<ScreenBoundaries>();
@@ -30,10 +32,10 @@ public class WaypointSetup : MonoBehaviour
 
     void GetBoundaries()
     {
-        leftBoundary = screenBoundaries.leftBoundary;
-        rightBoundary = screenBoundaries.rightBoundary;
+        leftBoundary = screenBoundaries.leftBoundary+OFFSET;
+        rightBoundary = screenBoundaries.rightBoundary-OFFSET;
         bottomBoundary = screenBoundaries.bottomBoundary;
-        topBoundary = screenBoundaries.topBoundary;
+        topBoundary = screenBoundaries.topBoundary-OFFSET;
     }
 
     void GiveCoords()

@@ -7,7 +7,7 @@ public class Asteroid : Obstacle
     // Start is called before the first frame update
     void Start()
     {
-        speed = 0.2f;
+        speed = 0.15f;
         healthPoints = 75;
         scoreValue = healthPoints;
         StartCoroutine(DestroyTimeout());
