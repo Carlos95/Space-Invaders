@@ -16,6 +16,7 @@ public class HealthPowerUp : PowerUp
     {
         if (playerController.remainingHearts < playerController.GetInitialNumberOfHearts() )
         {
+            audioManager.PlayAudio(powerUpAudio,audioVolume);
             playerController.remainingHearts++;
             Destroy(gameObject);
         }

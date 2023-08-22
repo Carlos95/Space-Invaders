@@ -7,28 +7,30 @@ public abstract class PowerUp : MonoBehaviour
 
     protected PlayerController playerController;
     protected GameObject player;
+    protected ScoreManager scoreManager;
     private float speed;
+
+    protected AudioManager audioManager;
+    [SerializeField] protected AudioClip powerUpAudio;
+    protected float audioVolume = 0.5f;
 
     
     void Awake()
-    {
-        try
+    { 
+        player = GameObject.Find("Player");
+        scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        if (player != null)
         {
-            player = GameObject.Find("Player");
             playerController = player.GetComponent<PlayerController>();
         }
-        catch
-        {
-            Debug.Log("Player Not Found");
-        };
         speed = 0.2f;
     }
     
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         StartCoroutine(DestroyTimeout());
-
     }
 
     // Update is called once per frame
@@ -47,14 +49,9 @@ public abstract class PowerUp : MonoBehaviour
 
     private IEnumerator DestroyTimeout()
     {
-        Debug.LogError("Start destroy countdown");
         yield return new WaitForSeconds(5);
-        Debug.LogError("Destroyed");
-
         Destroy(gameObject);
     }
 
     protected abstract void OnTriggerEnter2D(Collider2D other);
-
-
 }

@@ -30,7 +30,7 @@ public class Missile : Projectile
         transform.Translate(Vector2.up * speed);
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D other)
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
         //if the collision is between the projectile and an obstacle/enemy
         if (other.gameObject.CompareTag(JUNK_TAG) 

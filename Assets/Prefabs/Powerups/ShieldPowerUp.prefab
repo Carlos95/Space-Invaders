@@ -124,3 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5381e2b95e9a9c04e99f11937a7b93d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpAudio: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}

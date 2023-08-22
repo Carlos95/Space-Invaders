@@ -43,6 +43,10 @@ public class ScoreManager : MonoBehaviour
     {
         //Debug.Log("Score Added: " + scoreAddition);
         score += scoreAddition;
+        if (scoreAddition > 1)
+        {
+            ShowAdditionScore(scoreAddition);
+        }
     }
 
     void SetScore()

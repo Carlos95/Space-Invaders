@@ -7,6 +7,8 @@ public abstract class Projectile : MonoBehaviour
     private float topBound = 20;
     private float bottomBound = -10;
     private int m_Damage;
+    protected AudioManager audioManager;
+
     public int damage
     {
         get { return m_Damage; }
@@ -14,6 +16,7 @@ public abstract class Projectile : MonoBehaviour
         {
             if (value < 0.0f)
             {
+                
                 Destroy(gameObject);
                 Debug.Log("Kill enemy if HP below 0");
             }
@@ -40,7 +43,13 @@ public abstract class Projectile : MonoBehaviour
             }
         }
     }
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+    }
+
+    // Start is called before the first frame update    
     void Start()
     {
         
@@ -61,5 +70,8 @@ public abstract class Projectile : MonoBehaviour
         }
     }
 
+
     protected abstract void Move();
+
+    protected abstract void OnTriggerEnter2D(Collider2D other);
 }

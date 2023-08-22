@@ -31,7 +31,7 @@ public class Junk : Obstacle
 
     protected override void Move()
     {
-        junkRb.AddForce((player.transform.position - transform.position).normalized * speed,ForceMode2D.Impulse);
+        junkRb.AddForce((playerController.transform.position - transform.position).normalized * speed,ForceMode2D.Impulse);
     }
 
     protected override IEnumerator DestroyTimeout()

@@ -16,6 +16,9 @@ TagManager:
   - MotherShipWaypoint
   - Laser
   - PowerUp
+  - PlayerLaser
+  - Shield
+  - EnemyLaser
   layers:
   - Default
   - TransparentFX
