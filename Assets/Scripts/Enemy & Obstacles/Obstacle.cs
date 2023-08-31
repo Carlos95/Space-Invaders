@@ -72,8 +72,15 @@ public abstract class Obstacle : MonoBehaviour
     {
         Instantiate(deathFX, transform.position, transform.rotation);
     }
-
     void FixedUpdate()
+    {
+        if (playerController != null && !playerController.IsDead())
+        {
+            MoveWithForce();
+        }
+    }
+
+    void Update()
     {
         if (playerController != null && !playerController.IsDead())
         {
@@ -81,7 +88,9 @@ public abstract class Obstacle : MonoBehaviour
         }        
     }
 
-    protected abstract void Move();
+    protected virtual void Move() {}
+
+    protected virtual void MoveWithForce() {}
     
 
     protected abstract IEnumerator DestroyTimeout();

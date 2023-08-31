@@ -10,7 +10,7 @@ public class WaypointSetup : MonoBehaviour
     private float topBoundary;
     ScreenBoundaries screenBoundaries;
 
-    private const float OFFSET = 0.5f; 
+    private const float OFFSET = 1f; 
 
     private void Awake()
     {
@@ -42,16 +42,16 @@ public class WaypointSetup : MonoBehaviour
     {
        switch (name)
        {
-            case "WP_TOP_LEFT":
+            case "C_WP":
                 transform.position = new Vector2(leftBoundary, topBoundary);
                 break;
-            case "WP_TOP_RIGHT":
+            case "D_WP":
                 transform.position = new Vector2(rightBoundary, topBoundary);
                 break;
-            case "WP_BOTTOM_MIDLEFT":
+            case "A_WP":
                 transform.position = new Vector2(leftBoundary, bottomBoundary / 3);
                 break;
-            case "WP_BOTTOM_MIDRIGHT":
+            case "B_WP":
                 transform.position = new Vector2(rightBoundary, bottomBoundary / 3);
                 break;
             case "WP_MOTHERSHIP_LEFT":

@@ -7,21 +7,15 @@ public class Asteroid : Obstacle
     // Start is called before the first frame update
     void Start()
     {
-        speed = 0.15f;
-        healthPoints = 75;
+        speed = 8f;
+        healthPoints = 100;
         scoreValue = healthPoints;
         StartCoroutine(DestroyTimeout());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     protected override void Move()
     {
-        transform.Translate(Vector2.up * speed);
+        transform.Translate(Vector2.up * speed * Time.deltaTime);
     }
 
     protected override IEnumerator DestroyTimeout()

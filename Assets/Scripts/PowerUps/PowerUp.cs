@@ -24,7 +24,7 @@ public abstract class PowerUp : MonoBehaviour
         {
             playerController = player.GetComponent<PlayerController>();
         }
-        speed = 0.2f;
+        speed = 7f;
     }
     
     // Start is called before the first frame update
@@ -34,7 +34,7 @@ public abstract class PowerUp : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (player != null && !playerController.IsDead())
         {
@@ -44,7 +44,7 @@ public abstract class PowerUp : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(Vector2.down * speed);
+        transform.Translate(Vector2.down * speed * Time.deltaTime);
     }
 
     private IEnumerator DestroyTimeout()

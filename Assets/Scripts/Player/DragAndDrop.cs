@@ -8,6 +8,8 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     Vector3 _startPosition;
     Vector3 _offsetToMouse;
     float _zDistanceToCamera;
+    float fingerOffset = 150f; // This offset makes the ship appear on top of the finger instead of under the finger to increase visibility of the ship
+
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -16,7 +18,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         _zDistanceToCamera = Mathf.Abs(_startPosition.z - Camera.main.transform.position.z);
 
         _offsetToMouse = _startPosition - Camera.main.ScreenToWorldPoint(
-            new Vector3(Input.mousePosition.x, Input.mousePosition.y, _zDistanceToCamera)
+            new Vector3(Input.mousePosition.x, Input.mousePosition.y - fingerOffset, _zDistanceToCamera)
         );
     }
 

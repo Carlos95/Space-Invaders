@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     private float m_Speed = 1;
     private int m_HealthPoints;
     public List<GameObject> waypoints;
+    private List<GameObject> orderedWaypoints;
     private int m_nextPosition;
     private ScoreManager scoreManager;
     private Vector2 m_CurrentPosition;
@@ -59,8 +60,10 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Start()
     {
-        
-        if (!waypoints.Any() || waypoints[m_nextPosition] == null)
+        if (WayPointsExist())
+        {
+            waypoints = waypoints.OrderBy(obj => obj.name).ToList();
+        } else
         {
             Debug.LogError("The enemy waypoint system is not working");
         }
@@ -69,7 +72,10 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         
-        EnemyMovePattern();
+        if (WayPointsExist())
+        {
+            EnemyMovePattern();
+        }
     }
 
     void ActivateExplosionAnimation()
@@ -94,5 +100,10 @@ public class Enemy : MonoBehaviour
         m_nextPosition++;
         if (m_nextPosition < waypoints.Count) return;
         m_nextPosition = 0;
+    }
+
+    private bool WayPointsExist()
+    {
+        return waypoints.Any() || waypoints[m_nextPosition] != null;
     }
 }

@@ -19,6 +19,7 @@ TagManager:
   - PlayerLaser
   - Shield
   - EnemyLaser
+  - Music
   layers:
   - Default
   - TransparentFX

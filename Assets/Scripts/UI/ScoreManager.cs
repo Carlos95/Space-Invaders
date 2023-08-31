@@ -2,21 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class ScoreManager : MonoBehaviour
 {
+    private int score;
     public TMP_Text scoreDisplay;
     [SerializeField] private TMP_Text highScoreDisplay;
     private TMP_Text additionScoreDisplay;
     [SerializeField] private GameObject highScoreObject;
     [SerializeField] private GameObject additionScoreObject;
-    private int score;
+    [SerializeField] private GameObject canvas;
     private PlayerController playerController;
+    private PlayAgainMenuController playAgainMenuController;
+
+    private bool HasPerformedSubmit;
+    public UnityEvent<string, int> submitScoreEvent;
 
     void Awake()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         additionScoreDisplay = additionScoreObject.GetComponent<TMP_Text>();
+        playAgainMenuController = canvas.GetComponent<PlayAgainMenuController>();
     }
     // Start is called before the first frame update
     void Start()
@@ -24,7 +31,7 @@ public class ScoreManager : MonoBehaviour
         score = 0;
         highScoreObject.SetActive(false);
         additionScoreObject.SetActive(false);
-
+        HasPerformedSubmit = false;
     }
 
     // Update is called once per frame
@@ -41,7 +48,6 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(int scoreAddition)
     {
-        //Debug.Log("Score Added: " + scoreAddition);
         score += scoreAddition;
         if (scoreAddition > 1)
         {
@@ -60,6 +66,12 @@ public class ScoreManager : MonoBehaviour
         {
             highScoreDisplay.SetText(score.ToString());
             highScoreObject.SetActive(true);
+            if (!HasPerformedSubmit && IsNewHighscore())
+            {
+                playAgainMenuController.ShowNewHighScoreText();
+                SubmitScore();
+                HasPerformedSubmit = true;
+            }
         }
     }
     
@@ -86,5 +98,23 @@ public class ScoreManager : MonoBehaviour
         additionScoreObject.SetActive(false);
     }
 
+    public void SubmitScore()
+    {
+        submitScoreEvent.Invoke(GetPlayerName(), score);
+    }
 
+    private string GetPlayerName()
+    {
+        return SaveManager.LoadString("PlayerName");
+    }
+
+    private int GetHighScore()
+    {
+        return SaveManager.LoadInt("HighScore");
+    }
+
+    public bool IsNewHighscore() 
+    {
+        return GetHighScore() < score;
+    }
 }

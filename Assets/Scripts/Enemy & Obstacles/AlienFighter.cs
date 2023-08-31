@@ -19,13 +19,11 @@ public class AlienFighter : Enemy
     protected override void Start()
     {
         base.Start();
-        speed = 7f;
+        speed = 6f;
         healthPoints = 150;
         scoreValue = healthPoints;
         canShoot = true;
     }
-
-    
 
     void FixedUpdate()
     {
@@ -36,7 +34,6 @@ public class AlienFighter : Enemy
     {
         if (canShoot)
         {
-
             StartCoroutine(BulletCadence());
         }
         else
@@ -60,6 +57,4 @@ public class AlienFighter : Enemy
         yield return new WaitForSeconds(bulletCadence);
         canShoot = true;
     }
-
-
 }
