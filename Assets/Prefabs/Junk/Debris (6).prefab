@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3772aa705ac9e84caf6f69b2739a81e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioOnDeath: {fileID: 8300000, guid: 1fd31868d68903d4f9e2c4a3b7ef98f3, type: 3}
+  deathFX: {fileID: 100002, guid: 39c95f0c0be4f9e4a984f875cd150074, type: 3}
 --- !u!50 &806806851128319565
 Rigidbody2D:
   serializedVersion: 4

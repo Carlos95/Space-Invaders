@@ -98,6 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415a43a886033e74ab489ed879687599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
+  audioOnDeath: {fileID: 8300000, guid: d47e6ed162da1f740ad807d00f4679f3, type: 3}
+  deathFX: {fileID: 100002, guid: 39c95f0c0be4f9e4a984f875cd150074, type: 3}
 --- !u!61 &5585821387535703039
 BoxCollider2D:
   m_ObjectHideFlags: 0

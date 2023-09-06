@@ -23,15 +23,11 @@ public class Junk : Obstacle
         StartCoroutine(DestroyTimeout());
     }
 
-    // Update is called once per frame 
-    void Update()
-    {
-        
-    }
+    
 
-    protected override void Move()
+    protected override void MoveWithForce()
     {
-        junkRb.AddForce((player.transform.position - transform.position).normalized * speed,ForceMode2D.Impulse);
+        junkRb.AddForce((playerController.transform.position - transform.position).normalized * speed, ForceMode2D.Impulse);
     }
 
     protected override IEnumerator DestroyTimeout()

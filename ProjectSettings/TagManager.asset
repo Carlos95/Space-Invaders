@@ -14,6 +14,12 @@ TagManager:
   - Junk
   - AlienFighterWaypoint
   - MotherShipWaypoint
+  - Laser
+  - PowerUp
+  - PlayerLaser
+  - Shield
+  - EnemyLaser
+  - Music
   layers:
   - Default
   - TransparentFX

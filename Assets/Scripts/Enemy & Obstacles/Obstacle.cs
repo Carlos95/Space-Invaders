@@ -8,8 +8,13 @@ public abstract class Obstacle : MonoBehaviour
     private int m_HealthPoints;
     private PlayerController m_Player;
     private ScoreManager scoreManager;
+    private AudioManager audioManager;
+    private GameObject player;
+
+    [SerializeField] private AudioClip audioOnDeath;
+    [SerializeField] private GameObject deathFX;
     public int scoreValue { get; set; }
-    public PlayerController player
+    public PlayerController playerController
     {
         get { return m_Player; }
         set
@@ -25,10 +30,10 @@ public abstract class Obstacle : MonoBehaviour
         {
             if (value <= 0.0f)
             {
+                audioManager.PlayAudio(audioOnDeath,0.4f);
+                ActivateExplosionAnimation();
                 Destroy(gameObject);
                 scoreManager.AddScore(scoreValue);
-                scoreManager.ShowAdditionScore(scoreValue);
-                Debug.Log("Obstacle Killed!");
             }
             else
             {
@@ -53,39 +58,39 @@ public abstract class Obstacle : MonoBehaviour
         }
     }
 
-    private void Awake()
+    void Awake()
     {
-        try
-        {
-            player = GameObject.Find("Player").GetComponent<PlayerController>();
+        player = GameObject.Find("Player");
+        if (player != null) {
+            playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         }
-        catch
-        {
-            Debug.Log("Player Not Found");
-        };
+        scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+    }
 
-        try
+    void ActivateExplosionAnimation()
+    {
+        Instantiate(deathFX, transform.position, transform.rotation);
+    }
+    void FixedUpdate()
+    {
+        if (playerController != null && !playerController.IsDead())
         {
-            scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
-        } catch
-        {
-            Debug.Log("Score Manager not found");
+            MoveWithForce();
         }
     }
 
-    private void Start()
+    void Update()
     {
-    }
-
-    private void FixedUpdate()
-    {
-        if (player != null && !player.IsDead())
+        if (playerController != null && !playerController.IsDead())
         {
             Move();
         }        
     }
 
-    protected abstract void Move();
+    protected virtual void Move() {}
+
+    protected virtual void MoveWithForce() {}
     
 
     protected abstract IEnumerator DestroyTimeout();

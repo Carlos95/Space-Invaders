@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyMissile : Projectile
 {
+    [SerializeField] private AudioClip audioOnShieldImpact;
+    [SerializeField] private GameObject shieldImpactAnimation;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +25,20 @@ public class EnemyMissile : Projectile
         transform.Translate(Vector2.up * speed);
     }
 
-    protected void OnTriggerEnter2D(Collider2D other)
+    private void ActivateShieldImpactAnimation()
+    {
+        Instantiate(shieldImpactAnimation, transform.position, transform.rotation);
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            gameObject.SetActive(false);
+        } else if (other.gameObject.CompareTag("Shield"))
+        {
+            ActivateShieldImpactAnimation();
+            audioManager.PlayAudio(audioOnShieldImpact,0.9f);
             gameObject.SetActive(false);
         }
     }
