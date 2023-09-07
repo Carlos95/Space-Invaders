@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -7,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class PlayAgainMenuController : MonoBehaviour
 {
     public Button replayButton;
+    public Button homeButton;
     public GameObject replayPanel;
     public GameObject inGameUI;
     [SerializeField] private GameObject scoreManagerObject;
@@ -14,20 +13,16 @@ public class PlayAgainMenuController : MonoBehaviour
     [SerializeField] private GameObject errorText;
     [SerializeField] private GameObject highScoreText;
     private PlayerController playerController;
-    private ScoreManager scoreManager;
 
 
     private void Awake()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        scoreManager = scoreManagerObject.GetComponent<ScoreManager>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Button replayButtonComponent = replayButton.GetComponent<Button>(); 
-        replayButtonComponent.onClick.AddListener(ResetScene);
         replayPanel.SetActive(false);
         inGameUI.SetActive(true);
         successfulText.SetActive(false);
@@ -44,7 +39,7 @@ public class PlayAgainMenuController : MonoBehaviour
         }
     }
 
-    void ResetScene()
+    public void ResetScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
