@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
@@ -15,6 +14,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private GameObject canvas;
     private PlayerController playerController;
     private PlayAgainMenuController playAgainMenuController;
+    [SerializeField] private JSONSaving saveManager;
+    private PlayerData playerData;
 
     private bool HasPerformedSubmit;
     public UnityEvent<string, int> submitScoreEvent;
@@ -32,6 +33,7 @@ public class ScoreManager : MonoBehaviour
         highScoreObject.SetActive(false);
         additionScoreObject.SetActive(false);
         HasPerformedSubmit = false;
+        playerData = saveManager.LoadData();
     }
 
     // Update is called once per frame
@@ -105,12 +107,12 @@ public class ScoreManager : MonoBehaviour
 
     private string GetPlayerName()
     {
-        return SaveManager.LoadString("PlayerName");
+        return playerData.name;
     }
 
     private int GetHighScore()
     {
-        return SaveManager.LoadInt("HighScore");
+        return playerData.score;
     }
 
     public bool IsNewHighscore() 

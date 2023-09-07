@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -15,26 +13,30 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private GameObject panelNameInput;
     [SerializeField] private TMP_Text panelNameInputText;
     [SerializeField] private GameObject successNameChangeText;
+    [SerializeField] private JSONSaving saveManager;
+    private PlayerData playerData;
 
     private bool RequestNameChange;
+    private string playerName;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-
         RequestNameChange = false;
+        playerName = GetPlayerName();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GetPlayerName() != "")
+        if (playerName != "")
         {
             ShowPlayerNameDisplay();
             ShowMainPanel();
-            playerNameText.SetText("Player: " + GetPlayerName());
+            playerNameText.SetText("Player: " + playerName);
             if (!RequestNameChange)
             {
                 HideNameInputPanel();
@@ -64,7 +66,13 @@ public class MainMenuController : MonoBehaviour
 
     private string GetPlayerName()
     {
-        return SaveManager.LoadString("PlayerName");
+        playerData = saveManager.LoadData();
+        return playerData.name;
+    }
+
+    public void NameChangeTrigger()
+    {
+        playerName = GetPlayerName();
     }
 
     public void OpenNewNamePanel()
