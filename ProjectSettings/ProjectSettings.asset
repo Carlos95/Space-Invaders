@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: AcostaGames
-  productName: Space Invaders
+  productName: Infinite Space
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.3
+  bundleVersion: 1.4
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -249,15 +249,15 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: '{inproject}: Android Release/user.keystore'
+  AndroidKeyaliasName: infinite space
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -265,7 +265,7 @@ PlayerSettings:
   androidGamepadSupportLevel: 0
   chromeosInputEmulation: 1
   AndroidMinifyWithR8: 0
-  AndroidMinifyRelease: 0
+  AndroidMinifyRelease: 1
   AndroidMinifyDebug: 0
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
@@ -389,32 +389,44 @@ PlayerSettings:
       m_SubKind: App Store
   - m_BuildTarget: Android
     m_Icons:
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 791500673bed988479adc42e956d4a81, type: 3}
+      - {fileID: 2800000, guid: ca5a93d6386c8f7428abf8e9f17eada7, type: 3}
       m_Width: 432
       m_Height: 432
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 3bca88542ef613c499e4d7fc81d03011, type: 3}
+      - {fileID: 2800000, guid: 408aa8e186b3f834698519ec93010881, type: 3}
       m_Width: 324
       m_Height: 324
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 095a4017ebecdf74da70f7c7e076beec, type: 3}
+      - {fileID: 2800000, guid: 52ad6894c6c336a44aed121fa38ee384, type: 3}
       m_Width: 216
       m_Height: 216
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 0540b5f5f39ea9948affc23b9434dbcf, type: 3}
+      - {fileID: 2800000, guid: ffb991add8053534aa1a75f992945a1e, type: 3}
       m_Width: 162
       m_Height: 162
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 38ad8d3349917f246a85a51f2b1a7a1a, type: 3}
+      - {fileID: 2800000, guid: 79a927a7de05aef4baa32e0cc30d5635, type: 3}
       m_Width: 108
       m_Height: 108
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 157e0984b1691c34490957155f7fdf5a, type: 3}
+      - {fileID: 0}
       m_Width: 81
       m_Height: 81
       m_Kind: 2
@@ -422,62 +434,67 @@ PlayerSettings:
     - m_Textures: []
       m_Width: 192
       m_Height: 192
-      m_Kind: 1
+      m_Kind: 0
       m_SubKind: 
     - m_Textures: []
       m_Width: 144
       m_Height: 144
-      m_Kind: 1
+      m_Kind: 0
       m_SubKind: 
     - m_Textures: []
       m_Width: 96
       m_Height: 96
-      m_Kind: 1
+      m_Kind: 0
       m_SubKind: 
     - m_Textures: []
       m_Width: 72
       m_Height: 72
-      m_Kind: 1
+      m_Kind: 0
       m_SubKind: 
     - m_Textures: []
       m_Width: 48
       m_Height: 48
-      m_Kind: 1
+      m_Kind: 0
       m_SubKind: 
     - m_Textures: []
       m_Width: 36
       m_Height: 36
-      m_Kind: 1
+      m_Kind: 0
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 90db800c859ff704abb58255e37152b8, type: 3}
       m_Width: 192
       m_Height: 192
-      m_Kind: 0
+      m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 3e665812ea4d3fd42b94c83eaa6c5081, type: 3}
       m_Width: 144
       m_Height: 144
-      m_Kind: 0
+      m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: e7e0926807fc87b438dd291594ddac61, type: 3}
       m_Width: 96
       m_Height: 96
-      m_Kind: 0
+      m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 724e019055f44f5408400702f1bdf352, type: 3}
       m_Width: 72
       m_Height: 72
-      m_Kind: 0
+      m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: df2e5724b30f9234dbfc2a7166ed313a, type: 3}
       m_Width: 48
       m_Height: 48
-      m_Kind: 0
+      m_Kind: 1
       m_SubKind: 
     - m_Textures: []
       m_Width: 36
       m_Height: 36
-      m_Kind: 0
+      m_Kind: 1
       m_SubKind: 
   m_BuildTargetBatching: []
   m_BuildTargetShaderSettings: []
@@ -781,7 +798,23 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    EmbeddedLinux: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    GameCoreScarlett: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    GameCoreXboxOne: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    LinuxHeadlessSimulation: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    Lumin: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    Nintendo Switch: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    PS4: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    PS5: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    Stadia: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    Standalone: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    WebGL: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    Windows Store Apps: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    XboxOne: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    iPhone: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
+    tvOS: UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP;UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
@@ -792,7 +825,7 @@ PlayerSettings:
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
   enableRoslynAnalyzers: 1
-  selectedPlatform: 2
+  selectedPlatform: 3
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 1

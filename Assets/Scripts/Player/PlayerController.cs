@@ -64,7 +64,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //PlayerMovement();
         PlayerLimitCorrection();
         Shoot();
         SetHealth();
@@ -85,16 +84,6 @@ public class PlayerController : MonoBehaviour
     {
         return heartContainers.Count;
     }
-
-    /* Replaced by Drag and Drop movement
-    void PlayerMovement()
-    {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-        transform.Translate(Vector2.right * Time.deltaTime * speed * horizontalInput);
-        transform.Translate(Vector2.up * Time.deltaTime * speed * verticalInput);
-    }
-    */
 
     void PlayerLimitCorrection()
     {
