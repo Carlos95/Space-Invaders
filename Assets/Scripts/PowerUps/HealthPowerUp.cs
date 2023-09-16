@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthPowerUp : PowerUp
-{   
+{
+    public UnityEvent<string> showPowerUpDescription;
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -18,7 +18,13 @@ public class HealthPowerUp : PowerUp
         {
             audioManager.PlayAudio(powerUpAudio,audioVolume);
             playerController.remainingHearts++;
+            ActivateDescription();
             Destroy(gameObject);
         }
+    }
+
+    private void ActivateDescription()
+    {
+        player.GetComponent<PowerUpText>().ActivateText("+1 heart");
     }
 }

@@ -12,6 +12,9 @@ public class PlayAgainMenuController : MonoBehaviour
     [SerializeField] private GameObject successfulText;
     [SerializeField] private GameObject errorText;
     [SerializeField] private GameObject highScoreText;
+    [SerializeField] private GameObject uploadingText;
+    [SerializeField] private GameObject internetConnectionPanel;
+
     private PlayerController playerController;
 
 
@@ -23,6 +26,8 @@ public class PlayAgainMenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        HideUploadingText();
+        internetConnectionPanel.SetActive(false);
         replayPanel.SetActive(false);
         inGameUI.SetActive(true);
         successfulText.SetActive(false);
@@ -55,13 +60,24 @@ public class PlayAgainMenuController : MonoBehaviour
     
     public void IsSubmitSuccessful(bool isSuccessful)
     {
+        successfulText.SetActive(isSuccessful);
         if (isSuccessful)
         {
-            successfulText.SetActive(true);
-        } else
+            internetConnectionPanel.SetActive(false);
+            HideUploadingText();
+        }
+    }
+
+    public void IsSubmitError(string error)
+    {
+        if (error == "403: Username is profane!")
         {
             errorText.SetActive(true);
+        } else
+        {
+            internetConnectionPanel.SetActive(true);
         }
+        HideUploadingText();
     }
 
     public void LoadMainMenu()
@@ -73,5 +89,15 @@ public class PlayAgainMenuController : MonoBehaviour
     public void ShowNewHighScoreText()
     {
         highScoreText.SetActive(true);
+    }
+
+    public void ShowUploadingText()
+    {
+        uploadingText.SetActive(true);
+    }
+
+    private void HideUploadingText()
+    {
+        uploadingText.SetActive(false);
     }
 }

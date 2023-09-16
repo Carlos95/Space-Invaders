@@ -58,7 +58,7 @@ public class PlayerLaser : MonoBehaviour
         DeactivateLaser();
     }
 
-    void DeactivateLaser()
+    public void DeactivateLaser()
     {
         laserInstance.SetActive(false);
     }

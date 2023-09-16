@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PointsPowerUp : PowerUp
 {
     private const int SCOREVALUE = 1000;
-    // Start is called before the first frame update
+
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,7 +11,13 @@ public class PointsPowerUp : PowerUp
         {
             audioManager.PlayAudio(powerUpAudio,audioVolume);
             scoreManager.AddScore(SCOREVALUE);
+            ActivateDescription();
             Destroy(gameObject);
         }
+    }
+
+    private void ActivateDescription()
+    {
+        player.GetComponent<PowerUpText>().ActivateText("+1000 points");
     }
 }

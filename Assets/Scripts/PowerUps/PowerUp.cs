@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class PowerUp : MonoBehaviour
@@ -15,7 +14,7 @@ public abstract class PowerUp : MonoBehaviour
     protected float audioVolume = 0.5f;
 
     
-    void Awake()
+    protected virtual void Awake()
     { 
         player = GameObject.Find("Player");
         scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
