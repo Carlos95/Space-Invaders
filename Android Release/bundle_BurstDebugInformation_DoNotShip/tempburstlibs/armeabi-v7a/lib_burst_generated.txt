@@ -114,6 +114,8 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_TILEMAP
 --compilation-defines=ENABLE_TIMELINE
 --compilation-defines=ENABLE_LEGACY_INPUT_MANAGER
+--compilation-defines=UNITY_MP_TOOLS_NETSIM_DISABLED_IN_DEVELOP
+--compilation-defines=UNITY_MP_TOOLS_NET_STATS_MONITOR_DISABLED_IN_DEVELOP
 --compilation-defines=PACKAGE_PHYSICS
 --compilation-defines=PACKAGE_PHYSICS2D
 --compilation-defines=PACKAGE_TILEMAP

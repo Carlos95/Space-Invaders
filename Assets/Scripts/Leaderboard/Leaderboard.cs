@@ -41,8 +41,14 @@ public class Leaderboard : MonoBehaviour
         {
             if (msg.Length > 0)
             {
-                playerIndex = msg[0].Rank;
-                GetLeaderboard();
+                foreach(Entry e in msg)
+                {
+                    if (e.Username == playerData.name)
+                    {
+                        playerIndex = e.Rank;
+                        GetLeaderboard();
+                    }
+                }
             }
         });
     }

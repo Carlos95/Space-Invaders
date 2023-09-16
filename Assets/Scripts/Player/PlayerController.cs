@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
         {
             audioManager.PlayAudio(onDeathAudio,0.7f);
             ActivateExplosionAnimation();
+            playerLaser.DeactivateLaser();
         }
     }
 
